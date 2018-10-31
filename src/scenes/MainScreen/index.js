@@ -4,8 +4,9 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import styles from './styles'
 import Counter from '../../components/Counter'
+import { connect } from 'react-redux'
 
-export default class MainScreen extends Component<{}> {
+class MainScreen extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
@@ -14,3 +15,11 @@ export default class MainScreen extends Component<{}> {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    value: state.counter.value,
+  }
+}
+
+export default connect(mapStateToProps)(MainScreen)
